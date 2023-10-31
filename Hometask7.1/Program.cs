@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hometask7._1
 {
@@ -11,71 +6,25 @@ namespace Hometask7._1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите координаты сферы:");
-            double x;
-            double y;
-            double z;
-            double radius;
+            Console.WriteLine("Введите координаты сферы и её радиус:");
+            double[] values = new double[4];
+            for (int i = 0; i < values.Length;)
+            {
+                Console.Write($"Введите значение №{i + 1}: ");
+                string inputStr = Console.ReadLine();
+                bool isParseSuccess = double.TryParse(inputStr, out values[i]);
+                if (isParseSuccess || string.IsNullOrEmpty(inputStr))
+                {
+                    i++;
+                }
+            }
 
-            while (true)
-            {
-                Console.Write("Координата x: ");
-                string inputStr = Console.ReadLine();
-                bool isParseSuccess = double.TryParse(inputStr, out x);
-                if (isParseSuccess || string.IsNullOrEmpty(inputStr))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели неверное число");
-                }
-            }
-            while (true)
-            {
-                Console.Write("Координата y: ");
-                string inputStr = Console.ReadLine();
-                bool isParseSuccess = double.TryParse(inputStr, out y);
-                if (isParseSuccess || string.IsNullOrEmpty(inputStr))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели неверное число");
-                }
-            }
-            while (true)
-            {
-                Console.Write("Координата z: ");
-                string inputStr = Console.ReadLine();
-                bool isParseSuccess = double.TryParse(inputStr, out z);
-                if (isParseSuccess || string.IsNullOrEmpty(inputStr))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели неверное число");
-                }
-            }
-            while (true)
-            {
-                Console.Write("Введите радиус: ");
-                string inputStr = Console.ReadLine();
-                bool isParseSuccess = double.TryParse(inputStr, out radius);
-                if (isParseSuccess || string.IsNullOrEmpty(inputStr))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели неверное число");
-                }
-            }
+            double x = values[0];
+            double y = values[1];
+            double z = values[2];
+            double radius = values[3];
 
             Sphere sphere = new Sphere(x, y, z, radius);
-
             double volume = sphere.GetVolume();
             Console.WriteLine($"Объём сферы = {volume}");
 
