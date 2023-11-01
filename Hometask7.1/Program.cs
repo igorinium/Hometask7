@@ -23,21 +23,16 @@ namespace Hometask7._1
             double y = values[1];
             double z = values[2];
             double radius = values[3];
-
             Sphere sphere = new Sphere(x, y, z, radius);
             double volume = sphere.GetVolume();
             Console.WriteLine($"Объём сферы = {volume}");
-
             double square = sphere.GetSquare();
             Console.WriteLine($"Площадь поверхности шара = {square}");
-
             string coordinates = sphere.GetCenter();
             Console.WriteLine($"Коодринаты центра сферы = {coordinates}");
-
             sphere.SetCenter(34, 12, 99);
             string coordinates2 = sphere.GetCenter();
             Console.WriteLine($"Коодринаты центра сферы = {coordinates2}");
-
             bool isPointInSphere = sphere.IsPointInside(0, 2, -5);
             Console.WriteLine($"Некая точка внутри сферы = {isPointInSphere}");
             Console.ReadLine();
